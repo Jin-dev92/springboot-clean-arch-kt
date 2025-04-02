@@ -10,7 +10,7 @@ enum class UserRole {
 
 @Entity
 @Table(name = "users")
-data class User(
+data class Users(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, updatable = false)

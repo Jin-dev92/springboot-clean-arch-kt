@@ -21,4 +21,12 @@ abstract class BaseEntity {
 
     @Column(nullable = true)
     var deletedAt: LocalDateTime? = null;
+
+    fun undo() {
+        this.deletedAt = null
+    }
+
+    fun delete() {
+        this.deletedAt = LocalDateTime.now()
+    }
 }
