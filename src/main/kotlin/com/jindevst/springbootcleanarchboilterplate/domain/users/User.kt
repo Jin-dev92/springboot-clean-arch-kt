@@ -1,5 +1,6 @@
-package domain
+package com.jindevst.springbootcleanarchboilterplate.domain.users
 
+import com.jindevst.springbootcleanarchboilterplate.domain.BaseEntity
 import jakarta.persistence.*
 import java.util.*
 
@@ -8,7 +9,7 @@ enum class UserRole {
 }
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -27,4 +28,4 @@ data class User(
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     var role: UserRole = UserRole.USER
-)
+) : BaseEntity()
