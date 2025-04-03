@@ -1,15 +1,13 @@
 services:
-  db:
+  postgres:
     image: postgres:latest
     #    container_name: postgres-db
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_DB=${POSTGRES_DB}
-    env_file:
-      - .env
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
     volumes:
       - ./database/postgres/data:/var/lib/postgresql/data
     networks:
@@ -21,13 +19,8 @@ services:
     #    container_name: springboot-app
     ports:
       - "8080:8080"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     depends_on:
-      - db
+      - postgres
     networks:
       - app-network
     restart: unless-stopped

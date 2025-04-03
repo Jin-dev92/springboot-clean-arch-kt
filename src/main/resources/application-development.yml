@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/test?useSSL=false&serverTimezone=UTC
-    username: kpasd002
-    password: test1234
+    url: jdbc:postgresql://postgres:5432/postgres?useSSL=false&serverTimezone=UTC
+    username: postgres
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: create
